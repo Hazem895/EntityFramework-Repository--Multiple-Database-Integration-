@@ -8,11 +8,12 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using ProjectEF.Domain;
+using ProjectEF.Domain.IRepository;
+using ProjectEF.Domain.DomainModels;
 
 namespace ProjectEF.Mongo_Infrasturcture.Repository
 {
-    public class CategoryCommands : ICommands<Category>
+    public class CategoryCommands : ICrudCommands<Category>
     {
         private readonly MongoDbContext _context;
 
@@ -23,34 +24,36 @@ namespace ProjectEF.Mongo_Infrasturcture.Repository
 
         public string Delete(Guid ID)
         {
-            _context.Categories.DeleteOne(x=>x.CategoriesId==ID);
+            _context.Categories.DeleteOne(x => x.CategoryId == ID);
             return $"{ID} Deleted";
         }
 
-        public IEnumerable<Category> Read(Guid? ID)
+        public IEnumerable<Category> ReadAll()
         {
-            return _context.Categories.Find(_ => true).ToEnumerable() ;
+            return _context.Categories.Find(_ => true).ToEnumerable();
         }
 
-        private Category FindById(Guid ID)
+        public Category? ReadById(Guid ID)
         {
-          return _context.Categories.Find(x=>x.CategoriesId== ID).SingleOrDefault();
+            return _context.Categories.Find(x => x.CategoryId == ID).SingleOrDefault();
         }
-        public string Save(Category Input)
+        public string Create(Category Input)
         {
-            var id = Read(null).Count()+1;
-            Input.Id=id;
-            Input.CategoriesId=Guid.NewGuid();
-             _context.Categories.InsertOne(Input);
-            return $"{Input.CategoriesId} Added";
+            var id = ReadAll().Count() + 1;
+            _context.Categories.InsertOne(Input);
+            return $"{Input.CategoryId} Added";
         }
 
-        public string Update(Category Input, Guid ID)
+        public string Update(Category Input/*, Guid ID*/)
         {
-            var recordToUpdate = FindById(ID);
-            recordToUpdate.Name = Input.Name;
-             _context.Categories.ReplaceOne(d => d.CategoriesId == ID, recordToUpdate);
-            return $"{ID} Updated";
+            var recToUpdate = ReadById(Input.CategoryId);
+            if (recToUpdate != null)
+            {
+                _context.Categories.ReplaceOne(d => d.CategoryId == Input.CategoryId, recToUpdate);
+                return $"{Input.CategoryId} Updated";
+            }
+            return "Not Exists";
+
         }
     }
 }

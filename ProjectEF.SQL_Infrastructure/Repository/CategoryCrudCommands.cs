@@ -6,25 +6,18 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectEF.ProjectEF.SQL_Infrastructure;
+using System.Runtime.CompilerServices;
 using ProjectEF.Domain.IRepository;
 using ProjectEF.Domain.DomainModels;
-//using ProjectEF.Models;
-//using ProjectEF.ProjectEF.postgreSQL_Infrastructure;
 
-namespace ProjectEF.postgreSQL_Infrastructure.Repository
+namespace ProjectEF.SQL_Infrastructure.Repository
 {
-    public class CategoryCommands : ICrudCommands<Category>
+    public class CategoryCrudCommands : ICrudCommands<Category>
     {
-        private readonly ApplicationDbContext_PG _context;
-        //private static string connectionString;
+        private readonly ApplicationDbContext_SQL _context;
 
-        public CategoryCommands(ApplicationDbContext_PG context)
-        {
-
-            _context = context;
-
-            // connectionString = _context.Database.GetDbConnection().ConnectionString;
-        }
+        public CategoryCrudCommands(ApplicationDbContext_SQL context) { _context = context; }
         public string Delete(Guid ID)
         {
             Category? record = ReadById(ID);
@@ -45,6 +38,7 @@ namespace ProjectEF.postgreSQL_Infrastructure.Repository
         {
             return _context.Categories.AsEnumerable();
         }
+
         public Category? ReadById(Guid ID)
         {
             return _context.Categories.SingleOrDefault(x => x.CategoryId == ID);
@@ -66,7 +60,10 @@ namespace ProjectEF.postgreSQL_Infrastructure.Repository
 
         public string Update(Category Input/*, Guid ID*/)
         {
-            Category? record = (ReadById(Input.CategoryId));
+            Category? record = ReadById(Input.CategoryId);
+            Detached(record);
+
+            _context.Entry(record).State = EntityState.Detached;
             if (record != null)
             {
                 _context.Categories.Update(Input);
@@ -76,5 +73,11 @@ namespace ProjectEF.postgreSQL_Infrastructure.Repository
             return "Not Exists";
         }
 
+        private void Detached(Category? category)
+        {
+            if (category != null) _context.Entry(category).State = EntityState.Detached;
+        }
+
     }
+
 }

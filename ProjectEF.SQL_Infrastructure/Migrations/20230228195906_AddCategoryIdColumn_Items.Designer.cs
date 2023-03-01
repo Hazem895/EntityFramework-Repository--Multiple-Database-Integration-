@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjectEF.ProjectEF.SQL_Infrastructure;
 
@@ -11,9 +12,11 @@ using ProjectEF.ProjectEF.SQL_Infrastructure;
 namespace ProjectEF.SQL_Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext_SQL))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230228195906_AddCategoryIdColumn_Items")]
+    partial class AddCategoryIdColumn_Items
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,10 +25,13 @@ namespace ProjectEF.SQL_Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ProjectEF.Domain.DomainModels.Category", b =>
+            modelBuilder.Entity("ProjectEF.Domain.Category", b =>
                 {
                     b.Property<Guid>("CategoryId")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ItemId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
@@ -36,14 +42,13 @@ namespace ProjectEF.SQL_Infrastructure.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("ProjectEF.Domain.DomainModels.Item", b =>
+            modelBuilder.Entity("ProjectEF.Domain.Item", b =>
                 {
                     b.Property<Guid>("ItemId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("CategoryId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("CategoryId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
@@ -61,6 +66,20 @@ namespace ProjectEF.SQL_Infrastructure.Migrations
                     b.HasKey("ItemId");
 
                     b.ToTable("Items");
+                });
+
+            modelBuilder.Entity("ProjectEF.Domain.Item", b =>
+                {
+                    b.HasOne("ProjectEF.Domain.Category", null)
+                        .WithMany("Items")
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ProjectEF.Domain.Category", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

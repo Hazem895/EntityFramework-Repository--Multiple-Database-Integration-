@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProjectEF.Domain;
 using ProjectEF.Mongo_Infrasturcture.EntityConfigurations;
+using ProjectEF.Domain.DomainModels;
 
 namespace ProjectEF.Mongo_Infrasturcture
 {

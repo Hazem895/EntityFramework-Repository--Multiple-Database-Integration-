@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="MediatR" Version="12.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3" />
@@ -14,6 +16,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
@@ -21,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ProjectEF.Mongo_Infrasturcture\ProjectEF.Mongo_Infrasturcture.csproj" />
     <ProjectReference Include="..\ProjectEF.postgreSQL_Infrastructure\ProjectEF.postgreSQL_Infrastructure.csproj" />
+    <ProjectReference Include="..\ProjectEF.Shared\ProjectEF.Shared.csproj" />
     <ProjectReference Include="..\ProjectEF.SQL_Infrastructure\ProjectEF.SQL_Infrastructure.csproj" />
   </ItemGroup>
 

@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProjectEF.Domain;
+using System.Security.Cryptography.X509Certificates;
+using ProjectEF.Domain.DomainModels;
 
 namespace ProjectEF.ProjectEF.SQL_Infrastructure
 {
@@ -15,7 +16,13 @@ namespace ProjectEF.ProjectEF.SQL_Infrastructure
 
         }
         public DbSet<Category> Categories { get; set; }
-
+        public DbSet<Item> Items { get; set; }
+        
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Item>()
+        //        .HasOne<Category>(x=>x.Category).WithMany(s=>s.Items).HasForeignKey<string>(c=>c.CategoryId.ToString());
+        //}
         
 
     }

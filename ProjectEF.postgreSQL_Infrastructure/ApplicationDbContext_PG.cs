@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProjectEF.Domain;
+using ProjectEF.Domain.DomainModels;
 
 namespace ProjectEF.postgreSQL_Infrastructure
 {
