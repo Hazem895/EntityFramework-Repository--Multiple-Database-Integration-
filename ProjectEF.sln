@@ -14,11 +14,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectEF.Domain", "Project
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectEF.SQL_Infrastructure", "ProjectEF.SQL_Infrastructure\ProjectEF.SQL_Infrastructure.csproj", "{40789891-CC8B-4717-9D9B-66CE40D8C38B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectEF.postgreSQL_Infrastructure", "ProjectEF.postgreSQL_Infrastructure\ProjectEF.postgreSQL_Infrastructure.csproj", "{5167A6D7-0498-494F-AEBE-FD6D2E92C740}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectEF.Shared", "ProjectEF.Shared\ProjectEF.Shared.csproj", "{8EFA7871-9655-42F4-8241-B81179D80151}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectEF.Mongo_Infrasturcture", "ProjectEF.Mongo_Infrasturcture\ProjectEF.Mongo_Infrasturcture.csproj", "{113C1CE0-51DA-4A86-9632-135F20FB02E9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectEF.Shared", "ProjectEF.Shared\ProjectEF.Shared.csproj", "{8EFA7871-9655-42F4-8241-B81179D80151}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectEF.BL", "ProjectEF.BL\ProjectEF.BL.csproj", "{01A9FE19-C1BA-4539-9A24-E1DC5EC95D6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,18 +36,14 @@ Global
 		{40789891-CC8B-4717-9D9B-66CE40D8C38B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40789891-CC8B-4717-9D9B-66CE40D8C38B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40789891-CC8B-4717-9D9B-66CE40D8C38B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5167A6D7-0498-494F-AEBE-FD6D2E92C740}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5167A6D7-0498-494F-AEBE-FD6D2E92C740}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5167A6D7-0498-494F-AEBE-FD6D2E92C740}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5167A6D7-0498-494F-AEBE-FD6D2E92C740}.Release|Any CPU.Build.0 = Release|Any CPU
-		{113C1CE0-51DA-4A86-9632-135F20FB02E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{113C1CE0-51DA-4A86-9632-135F20FB02E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{113C1CE0-51DA-4A86-9632-135F20FB02E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{113C1CE0-51DA-4A86-9632-135F20FB02E9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8EFA7871-9655-42F4-8241-B81179D80151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8EFA7871-9655-42F4-8241-B81179D80151}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EFA7871-9655-42F4-8241-B81179D80151}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EFA7871-9655-42F4-8241-B81179D80151}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01A9FE19-C1BA-4539-9A24-E1DC5EC95D6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01A9FE19-C1BA-4539-9A24-E1DC5EC95D6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01A9FE19-C1BA-4539-9A24-E1DC5EC95D6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01A9FE19-C1BA-4539-9A24-E1DC5EC95D6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

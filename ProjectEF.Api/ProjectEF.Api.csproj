@@ -22,8 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProjectEF.Mongo_Infrasturcture\ProjectEF.Mongo_Infrasturcture.csproj" />
-    <ProjectReference Include="..\ProjectEF.postgreSQL_Infrastructure\ProjectEF.postgreSQL_Infrastructure.csproj" />
+    <ProjectReference Include="..\ProjectEF.BL\ProjectEF.BL.csproj" />
     <ProjectReference Include="..\ProjectEF.Shared\ProjectEF.Shared.csproj" />
     <ProjectReference Include="..\ProjectEF.SQL_Infrastructure\ProjectEF.SQL_Infrastructure.csproj" />
   </ItemGroup>

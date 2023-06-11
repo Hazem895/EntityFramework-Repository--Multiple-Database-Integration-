@@ -2,10 +2,11 @@
 {
     public interface ICrudCommands<T>
     {
-        IEnumerable<T> ReadAll();
-        T? ReadById(Guid ID);
-        string Create(T Input);
-        string Update(T Input/*,Guid ID*/);
-        string Delete(Guid ID);
+        Task<IEnumerable<T>> ReadAll();
+        Task<T?> ReadByID(Guid ID);
+        Task<bool> Create(T Input);
+        Task<bool> Update(T Input/*,Guid ID*/);
+        Task<bool> Delete(Guid ID);
+        Task<bool> Delete(string code);
     }
 }

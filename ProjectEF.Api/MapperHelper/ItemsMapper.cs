@@ -18,7 +18,7 @@ namespace ProjectEF.Api.MapperHelper
             {
                 return new MapperConfiguration(cfg =>
                 {
-                    cfg.CreateMap<Item, ItemDto>();
+                    cfg.CreateMap<Patient, PatientAdminDTO>();
                 });
             }
         }
@@ -29,60 +29,46 @@ namespace ProjectEF.Api.MapperHelper
             {
                 return new MapperConfiguration(cfg =>
                 {
-                    cfg.CreateMap<ItemDto, Item>();
+                    cfg.CreateMap<PatientAdminDTO, Patient>();
                 });
             }
         }
 
 
-        public static Item CreateMapper(this CreateItem CC)
+        public static Patient CreateMapper(this CreatedPatient createdPatient)
         {
-            var CreatedModel = new Item()
-            {
-                ItemId = Guid.NewGuid(),
-                Name = CC.Name,
-                Price= CC.Price,
-                Qty= CC.Qty,
-                CategoryId= CC.CategoryId,
-                ImagePath= CC.ImagePath,
-            };
+            var returnedItem = new Mapper(DtoConfig).Map<Patient>(createdPatient); ;
+            returnedItem.ID = Guid.NewGuid();
 
-            return CreatedModel;
+            return returnedItem;
         }
-        public static Item UpdateMapper(this UpdateItem CC, Guid Id)
+        public static Patient UpdateMapper(this UpdatedPatient updatedPatient, Guid Id)
         {
-            var UpdatedModel = new Item()
-            {
-                ItemId = Id,
-                Name = CC.Name,
-                Price = CC.Price,
-                Qty = CC.Qty,
-                CategoryId = CC.CategoryId,
-                ImagePath = CC.ImagePath,
-            };
+            var returnedItem = new Mapper(DtoConfig).Map<Patient>(updatedPatient);
+            returnedItem.ID = Id;
 
-            return UpdatedModel;
+            return returnedItem;
         }
 
-        public static ItemDto ToDto(this Item CC)
+        public static PatientAdminDTO ToDto(this Patient CC)
         {
-            return new Mapper(DtoConfig).Map<ItemDto>(CC); ;
+            return new Mapper(DtoConfig).Map<PatientAdminDTO>(CC); ;
         }
 
-        public static IEnumerable<ItemDto> ToDto(this IEnumerable<Item> CC)
+        public static IEnumerable<PatientAdminDTO> ToDto(this IEnumerable<Patient> CC)
         {
-            return new Mapper(DtoConfig).Map<IEnumerable<ItemDto>>(CC); ;
+            return new Mapper(DtoConfig).Map<IEnumerable<PatientAdminDTO>>(CC); ;
         }
 
-        public static Item ToDomain(this ItemDto CC)
+        public static Patient ToDomain(this PatientAdminDTO CC)
         {
-            return new Mapper(DomainConfig).Map<Item>(CC); ;
+            return new Mapper(DomainConfig).Map<Patient>(CC); ;
         }
 
-        public static IEnumerable<Item> ToDomain(this IEnumerable<ItemDto> CC)
+        public static IEnumerable<Patient> ToDomain(this IEnumerable<PatientAdminDTO> CC)
         {
 
-            return new Mapper(DomainConfig).Map<IEnumerable<Item>>(CC); ;
+            return new Mapper(DomainConfig).Map<IEnumerable<Patient>>(CC); ;
         }
     }
 }

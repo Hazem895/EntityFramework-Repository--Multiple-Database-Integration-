@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectEF.Shared.CommandsModels
+namespace ProjectEF.Domain.DomainModels
 {
-    public class CreatedPatient
+    public class Patient
     {
-        public string Name { get; set; }
-        public double Price { get; set; }
-        public int Qty { get; set; }
-        public Guid CategoryId { get; set; }
-        public string? ImagePath { get; set; }
-    }
-
-    public class UpdatedPatient
-    {
+        [Key]
+        public Guid ID { get; set; }
+        public string Code { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
         public int Sex { get; set; }

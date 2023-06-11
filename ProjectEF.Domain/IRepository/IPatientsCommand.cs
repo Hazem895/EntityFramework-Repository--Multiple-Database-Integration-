@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace ProjectEF.Domain.IRepository
 {
-    public interface IItemsCommand : ICrudCommands<Item>
+    public interface IPatientsCommand : ICrudCommands<Patient>
     {
-        IEnumerable<Item> GetItemsByCategoryId(Guid CategoryId);
+        Task<Patient?> ReadByCode(string Code);
+
     }
 }

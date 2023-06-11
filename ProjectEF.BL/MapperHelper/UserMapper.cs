@@ -4,9 +4,9 @@ using ProjectEF.Shared.CommandsModels;
 using ProjectEF.Shared.DataObjectLayer;
 using System.Runtime.CompilerServices;
 
-namespace ProjectEF.Api.MapperHelper
+namespace ProjectEF.BL.MapperHelper
 {
-    public static class CategoryMapper
+    public static class UserMapper
     {
         private static MapperConfiguration DtoConfig
         {
